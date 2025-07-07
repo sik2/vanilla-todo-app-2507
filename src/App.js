@@ -1,5 +1,9 @@
 function App({ $target }) {
-  console.log($target);
+  const $div = document.createElement("div");
+  $target.appendChild($div);
+
+  new TodoForm();
+  new TodoList();
 }
 
 export default App;
