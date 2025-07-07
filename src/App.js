@@ -6,7 +6,7 @@ function App({ $target }) {
   $target.appendChild($page);
 
   new TodoForm({ $target: $page });
-  new TodoList();
+  new TodoList({ $target: $page });
 }
 
 export default App;
