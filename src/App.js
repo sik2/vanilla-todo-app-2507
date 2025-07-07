@@ -3,11 +3,17 @@ import TodoForm from "./components/TodoForm.js";
 import TodoList from "./components/TodoList.js";
 
 function App({ $target }) {
-  const intialState = ["할일1", "할일2", "할일3"];
+  const intialState = [
+    { id: 1, text: "할일1", checked: true },
+    { id: 2, text: "할일2", checked: false },
+    { id: 3, text: "할일3", checked: false },
+  ];
+  let lastId = 4;
 
   const onSubmit = (text) => {
-    const nextState = [...todoList.state, text];
+    const nextState = [...todoList.state, { id: lastId, text, checked: false }];
     todoList.setState(nextState);
+    lastId++;
   };
 
   const $page = document.createElement("div");
