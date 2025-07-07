@@ -1,8 +1,11 @@
-function App({ $target }) {
-  const $div = document.createElement("div");
-  $target.appendChild($div);
+import TodoForm from "./components/TodoForm.js";
+import TodoList from "./components/TodoList.js";
 
-  new TodoForm();
+function App({ $target }) {
+  const $page = document.createElement("div");
+  $target.appendChild($page);
+
+  new TodoForm({ $target: $page });
   new TodoList();
 }
 
