@@ -2,6 +2,14 @@ function TodoList({ $target, intialState }) {
   const $list = document.createElement("div");
   $target.appendChild($list);
 
+  $list.addEventListener("click", (e) => {
+    if (e.target.classList.contains("del_btn")) {
+      const id = parseInt(e.target.getAttribute("data-id"));
+      console.log(id);
+      // delete 처리
+    }
+  });
+
   this.state = intialState;
 
   this.setState = (nextState) => {
@@ -21,7 +29,13 @@ function TodoList({ $target, intialState }) {
       $list.innerHTML = `
         <ul>
             ${this.state
-              .map((item) => `<li>${item.id} / ${item.text}</li>`)
+              .map(
+                (item) => `
+              <li>
+                ${item.id} / <span>${item.text}</span><button data-id="${item.id}" class="del_btn">X</button>
+              </li>
+              `
+              )
               .join("")}
         </ul>
     `;
