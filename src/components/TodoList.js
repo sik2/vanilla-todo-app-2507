@@ -1,13 +1,34 @@
-function TodoList({ $target }) {
+function TodoList({ $target, intialState }) {
   const $list = document.createElement("div");
-  $list.innerHTML = `
-    <ul>
-        <li>할일1</li>
-        <li>할일2</li>
-        <li>할일3</li>
-    </ul>
-  `;
   $target.appendChild($list);
+
+  this.state = intialState;
+
+  this.setState = (nextState) => {
+    this.state = nextState;
+    this.render();
+  };
+
+  this.render = () => {
+    this.state = intialState;
+
+    this.setState = (nextState) => {
+      this.state = nextState;
+      this.render();
+    };
+
+    this.render = () => {
+      $list.innerHTML = `
+        <ul>
+            ${this.state.map((item) => `<li>${item}</li>`).join("")}
+        </ul>
+    `;
+    };
+
+    this.render();
+  };
+
+  this.render();
 }
 
 export default TodoList;
