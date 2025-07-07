@@ -22,7 +22,10 @@ function App({ $target }) {
   };
 
   const onToggle = (id) => {
-    console.log(id);
+    const nextState = todoList.state.map((todo) =>
+      todo.id == id ? { ...todo, checked: !todo.checked } : todo
+    );
+    todoList.setState(nextState);
   };
 
   const $page = document.createElement("div");

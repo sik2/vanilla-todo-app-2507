@@ -33,9 +33,12 @@ function TodoList({ $target, intialState, onDelete, onToggle }) {
             ${this.state
               .map(
                 (item) => `
-              <li>
+              <li style="text-decoration: ${
+                item.checked ? "line-through" : "none"
+              }">
                 <input 
-                    type="checkbox" 
+                    type="checkbox"
+                    ${item.checked ? "checked" : ""}
                     data-id="${item.id}" 
                     class="toggle_btn"
                 />
