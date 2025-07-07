@@ -1,12 +1,11 @@
-function TodoList({ $target, intialState }) {
+function TodoList({ $target, intialState, onDelete }) {
   const $list = document.createElement("div");
   $target.appendChild($list);
 
   $list.addEventListener("click", (e) => {
     if (e.target.classList.contains("del_btn")) {
       const id = parseInt(e.target.getAttribute("data-id"));
-      console.log(id);
-      // delete 처리
+      onDelete(id);
     }
   });
 
